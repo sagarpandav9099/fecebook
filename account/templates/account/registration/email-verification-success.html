@@ -1,0 +1,27 @@
+{% include "account/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    body{
+        background-color: gray;
+    }
+</style>
+    
+    <body>
+        <br>
+        <div class="text-center">
+            <div class="container bg-white shadow-md p-5 form-layout">
+                <i class="fa fa fa-check fa-3x text-success" aria-hidden="true"></i>
+                <br><br>
+                <h4>Your Account it now active!</h3>
+                    <hr>
+                <p>Please proceed to login.</p>
+                <a class="btn btn-primary " href="{% url 'my-login' %}">Login</a>
+            </div>
+        </div>
+        <br>
+    </body>
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for notification in notifications %}
+<a class="dropdown-item" href="{% url 'notification_detail' notification.id %}">
+    {{ notification.message }}
+    {% if not notification.read %}
+        <span class="badge badge-warning">New</span>
+    {% endif %}
+</a>
+{% endfor %}
+{% endblock %}

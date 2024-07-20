@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Groups</h2>
+    <a href="{% url 'create_group' %}" class="btn btn-primary mb-3">Create New Group</a>
+    <ul class="list-group">
+        {% for group in groups %}
+        <li class="list-group-item">
+            <h5>
+                <a href="{% url 'group_detail' group.id %}">{{ group.name }}</a>
+            </h5>
+            <p>{{ group.description }}</p>
+            {% if user in group.members.all %}
+                <form method="POST" action="{% url 'leave_group' group.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Leave Group</button>
+                </form>
+            {% else %}
+                <form method="POST" action="{% url 'join_group' group.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success btn-sm">Join Group</button>
+                </form>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

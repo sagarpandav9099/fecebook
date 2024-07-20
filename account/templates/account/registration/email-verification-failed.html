@@ -1,0 +1,26 @@
+{% include "account/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    body{
+        background-color: gray;
+    }
+</style>
+    
+    <body>
+        <br>
+        <div class="text-center">
+            <div class="container bg-white shadow-md p-5 form-layout">
+                <i class="fa fa-times fa-3x text-danger" aria-hidden="true"></i>
+                <br><br>
+                <h4>Your Account verification failed!</h3>
+                    <hr>
+                <p>Please contact admin support.</p>
+            </div>
+        </div>
+        <br>
+    </body>
+
+{% endblock content %}

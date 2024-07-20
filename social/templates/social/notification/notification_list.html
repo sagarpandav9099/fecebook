@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Notifications</h2>
+    <ul class="list-group">
+        {% for notification in notifications %}
+        <li class="list-group-item {% if not notification.read %}list-group-item-warning{% endif %}">
+            {{ notification.message }}
+            <span class="float-right">{{ notification.timestamp|date:"SHORT_DATETIME_FORMAT" }}</span>
+            {% if not notification.read %}
+            <a href="{% url 'mark_as_read' notification.id %}" class="btn btn-sm btn-primary">Mark as Read</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

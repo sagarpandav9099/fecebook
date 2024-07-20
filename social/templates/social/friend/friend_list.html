@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-12">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Friend Requests</h5>
+        
+            <ul> 
+                {% for request in friend_requests %}
+               
+                <li>
+                    {{ request.from_user.username }}
+                    <a href="{% url 'accept-friend-request' request.id %}" class="btn btn-success btn-sm">Accept</a>
+                </li>
+            
+                {% endfor %}
+            
+            </ul>
+    
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Add Friends</h5>
+            <ul>
+                <div class="row">
+                {% for user in all_users %}
+                <div class="col-md-3">
+                <li>
+                    {{ user.username }}
+                    {% if user.id in sent_requests %}
+                        <button class="btn btn-secondary btn-sm" disabled>Request Sent</button>
+                    {% else %}
+                        <a href="{% url 'send-friend-request' user.id %}" class="btn btn-primary btn-sm">Add Friend</a>
+                    {% endif %}
+                </li>
+            </div>
+                {% endfor %}
+        </div>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

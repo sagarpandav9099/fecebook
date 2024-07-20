@@ -1,0 +1,39 @@
+{% include "account/base.html" %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+    <body>
+        <br><br>
+        <div class="container bg-white shadow-md p-5 form-layout">
+            <h3>Create User Account</h3>
+
+            <h5>Chat your favourite Friend today!</h5>
+
+            <br>
+            <br>
+
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                {{ form.username|as_crispy_field }}
+                {{ form.email|as_crispy_field }}
+                {{ form.password1|as_crispy_field }}
+                {{ form.password2|as_crispy_field }}
+
+                <br><br>
+                <button type="submit" class="btn btn-primary  btn-lg w-100 btn-block p-2"><i class="fa fa-user-plus" aria-hidden="true"></i> &nbsp; Create User</button>
+
+                <br><br>
+
+                <div class="text-center">
+                    <a href="#">Already have an account?</a>
+                </div>
+            </form>
+        </div>
+        <br><br>
+    </body>
+
+{% endblock content %}
